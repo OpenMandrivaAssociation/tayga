@@ -5,6 +5,7 @@ Name:		tayga
 Version:	0.9.6
 Release:	2
 Source0:	https://github.com/apalrd/tayga/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:  tayga.tmpfilesd.conf
 Summary:	Simple, no-fuss NAT64 for Linux 
 URL:		https://github.com/apalrd/tayga
 License:	GPL-2.0
