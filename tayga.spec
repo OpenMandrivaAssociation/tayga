@@ -3,7 +3,7 @@
 
 Name:		tayga
 Version:	0.9.6
-Release:	2
+Release:	3
 Source0:	https://github.com/apalrd/tayga/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:  tayga.tmpfilesd.conf
 Summary:	Simple, no-fuss NAT64 for Linux 
@@ -35,7 +35,7 @@ install -p -D -m 0644 %SOURCE1 %{buildroot}%{_tmpfilesdir}/%{name}.conf
 sed -i 's,%i,default,g' scripts/%{name}@.service
 install -p -D -m 0644 scripts/%{name}@.service %{buildroot}/%{_unitdir}/%{name}.service
 
-install -D -m 0644 /dev/stdin %{buildroot}%{_sysconfdir}/%{name}.conf <<'EOF'
+install -D -m 0644 /dev/stdin %{buildroot}%{_sysconfdir}/%{name}/default.conf <<'EOF'
 tun-device nat64
 ipv4-addr 192.168.255.1
 prefix 2001:db8:1:ffff::/96
@@ -52,7 +52,7 @@ EOF
 
 %files
 %license LICENSE
-%config(noreplace) /etc/%{name}.conf
+%config(noreplace) /etc/%{name}/default.conf
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_sbindir}/%{name}
