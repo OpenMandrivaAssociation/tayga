@@ -35,6 +35,9 @@ install -p -D -m 0644 %SOURCE1 %{buildroot}%{_tmpfilesdir}/%{name}.conf
 sed -i 's,%i,default,g' scripts/%{name}@.service
 install -p -D -m 0644 scripts/%{name}@.service %{buildroot}/%{_unitdir}/%{name}.service
 
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+install -p -D -m 0644 %{name}.conf.example %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf.example
+
 %post
 %tmpfiles_create_package %{name} %{name}.tmpfilesd.conf
 %systemd_post %{name}
@@ -49,3 +52,4 @@ install -p -D -m 0644 scripts/%{name}@.service %{buildroot}/%{_unitdir}/%{name}.
 %{_sbindir}/%{name}
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
+%{_sysconfdir}/%{name}/%{name}.conf.example
